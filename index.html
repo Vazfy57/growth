@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VazFy - Growth Dashboard</title>
+    <!-- ChartJS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- AlpineJS -->
+    <script defer src="scripts.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.1/dist/cdn.min.js"></script>
+    <!-- TailwindCSS -->
+    <link href="src/output.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Inter", sans-serif;
+        }
+        [x-cloak] {
+			display: none !important;
+		}
+    </style>
+</head>
+<body class="bg-gray-50" x-data="alpine">
+
+    <!-- Navbar -->
+    <div class="flex items-end justify-center shadow bg-white border-b py-6">
+        <img src="static/logo.png">
+        <p class="text-3xl text-gray-900 font-medium">azfy</p>
+    </div>
+    
+    <div class="p-6 space-y-6">
+
+        <!-- Big Numbers -->
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <template x-for="big_number in big_numbers">
+                <div class="rounded-lg shadow bg-white border">
+                    <div class="flex items-center justify-between border-b p-4">
+                        <div class="rounded-lg bg-indigo-600 p-3">
+                            <svg class="size-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+                                <path fill-rule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.008ZM4.5 9.75A.75.75 0 0 1 5.25 9h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 1-.75-.75V9.75Z" clip-rule="evenodd" />
+                                <path d="M2.25 18a.75.75 0 0 0 0 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 0 0-.75-.75H2.25Z" />
+                            </svg>
+                        </div>
+                        <div class="text-right tracking-wide space-y-1">
+                            <p class="text-sm text-gray-600 font-medium" x-text="big_number.title"></p>
+                            <p class="text-2xl text-gray-900 font-semibold" x-text="big_number.value"></p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-900 font-medium tracking-wide"><span class="text-green-500">+55%</span> que no último mês</p>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <!-- Charts -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <template x-for="chart in charts_data">
+                <div class="rounded-lg shadow bg-white border">
+                    <div class="flex flex-col p-6 gap-6">
+                        <canvas class="chart"></canvas>
+                        <div class="tracking-wide space-y-1">
+                            <p class="text-gray-900 font-bold" x-text="chart.title"></p>
+                            <p class="text-sm text-gray-600 font-medium" x-text="chart.subtitle"></p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+    </div>
+
+</body>
+</html>
