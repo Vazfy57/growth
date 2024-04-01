@@ -21,19 +21,6 @@ document.addEventListener('alpine:init', () => {
         ],
         charts_data: [
             {
-                'title': 'CPA por Mídia',
-                'subtitle': 'Mostra o CPA de cada mídia',
-                'type': 'bar',
-                'data': {
-                    'labels': ['Facebook', 'Instagram', 'Google', 'Tiktok', 'Bing'],
-                    'datasets': [{
-                        'label': 'CPA',
-                        'data': [65, 59, 80, 81, 56],
-                        'backgroundColor': 'rgb(79, 70, 229, 0.8)',
-                    }],
-                },
-            },
-            {
                 'title': 'Divisão do Share',
                 'subtitle': 'Mostra o share de investimento para o próximo mês',
                 'type': 'bar',
@@ -42,7 +29,20 @@ document.addEventListener('alpine:init', () => {
                     'datasets': [{
                         'label': 'Share',
                         'data': [15, 28, 42, 5, 10],
-                        'backgroundColor': 'rgb(79, 70, 229, 0.8)',
+                        'backgroundColor': 'rgb(79, 70, 229, 0.7)',
+                    }],
+                },
+            },
+            {
+                'title': 'CPA por Mídia',
+                'subtitle': 'Mostra o CPA de cada mídia',
+                'type': 'bar',
+                'data': {
+                    'labels': ['Facebook', 'Instagram', 'Google', 'Tiktok', 'Bing'],
+                    'datasets': [{
+                        'label': 'CPA',
+                        'data': [65, 59, 80, 81, 56],
+                        'backgroundColor': 'rgb(79, 70, 229, 0.7)',
                     }],
                 },
             },
@@ -75,7 +75,7 @@ document.addEventListener('alpine:init', () => {
                                 'y': 864.86470,
                             },
                         ],
-                        'backgroundColor': 'rgb(79, 70, 229, 0.8)',
+                        'backgroundColor': 'rgb(79, 70, 229, 0.7)',
                     }],
                 },
             },
@@ -89,13 +89,13 @@ document.addEventListener('alpine:init', () => {
                         'label': 'Receita',
                         'data': [50, 37, 92, 138, 250, 312, 374],
                         'backgroundColor': [
-                            'rgb(79, 70, 229, 0.8)',
-                            'rgb(79, 70, 229, 0.8)',
-                            'rgb(79, 70, 229, 0.8)',
-                            'rgb(79, 70, 229, 0.8)',
-                            'rgb(225, 29, 72, 0.8)',
-                            'rgb(225, 29, 72, 0.8)',
-                            'rgb(225, 29, 72, 0.8)',
+                            'rgb(79, 70, 229, 0.7)',
+                            'rgb(79, 70, 229, 0.7)',
+                            'rgb(79, 70, 229, 0.7)',
+                            'rgb(79, 70, 229, 0.7)',
+                            'rgb(225, 29, 72, 0.7)',
+                            'rgb(225, 29, 72, 0.7)',
+                            'rgb(225, 29, 72, 0.7)',
                         ],
                     }],
                 },
@@ -109,7 +109,7 @@ document.addEventListener('alpine:init', () => {
         },
 
         gerar_graficos() {
-            charts = document.getElementsByClassName('chart')
+            charts = document.getElementsByTagName('canvas')
             for (i = 0; i < charts.length; i++) {
                 new Chart(charts[i], {
                     type: this.charts_data[i].type,
